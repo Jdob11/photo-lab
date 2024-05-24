@@ -1,10 +1,7 @@
 import React from 'react';
 
-import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
-import PhotoList from 'components/PhotoList';
-// import TopicList from 'components/TopicList';
-import TopNavigationBar from 'components/TopNavigationBar';
+import HomeRoute from 'components/HomeRoute';
 
 const sampleDataForPhotoListItem = {
   id: "1",
@@ -22,9 +19,7 @@ const App = () => {
 
   return (
     <div className="App">
-      {/* <TopicList/>
-      <PhotoList/> */}
-      <TopNavigationBar/>
+      <HomeRoute/>
     </div>
   );
 };
