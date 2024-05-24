@@ -5,6 +5,23 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
   const { imageSource, city, country, username, profile } = props;
+  
+  let missingProps = '';
+
+  if (!imageSource) missingProps += 'imageSource, ';
+  if (!city) missingProps += 'city, ';
+  if (!country) missingProps += 'country, ';
+  if (!username) missingProps += 'username, ';
+  if (!profile) missingProps += 'profile, ';
+
+  if (missingProps) {
+    missingProps = missingProps.slice(0, -2);
+    return (
+      <article className="photo-list__item">
+        Error loading photo, the following props are missing: {missingProps}
+      </article>
+    );
+  }
   return (
     <article className="photo-list__item">
       <PhotoFavButton />

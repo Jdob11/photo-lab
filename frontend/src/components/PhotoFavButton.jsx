@@ -7,13 +7,13 @@ function PhotoFavButton() {
 
   const [favorite, setFavorite] = useState(false);
 
-  const switchFavorite = () => {
+  const toggleFavorite = () => {
     console.log("favorite switched");
     setFavorite(isFavorite => !isFavorite);
   }
 
   return (
-    <div className="photo-list__fav-icon" onClick={switchFavorite}>
+    <div className="photo-list__fav-icon" onClick={toggleFavorite}>
       <div className="photo-list__fav-icon-svg">
         <FavIcon selected={favorite}/>
       </div>
