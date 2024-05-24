@@ -3,14 +3,8 @@ import React, { useCallback, useState } from 'react';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
-function PhotoFavButton() {
-
-  const [favorite, setFavorite] = useState(false);
-
-  const toggleFavorite = () => {
-    console.log("favorite switched");
-    setFavorite(isFavorite => !isFavorite);
-  }
+function PhotoFavButton(props) {
+  const { favorite, toggleFavorite } = props;
 
   return (
     <div className="photo-list__fav-icon" onClick={toggleFavorite}>
