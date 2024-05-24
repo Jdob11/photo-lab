@@ -5,7 +5,7 @@ import PhotoFavButton from "./PhotoFavButton";
 import PropTypes from 'prop-types';
 
 const PhotoListItem = (props) => {
-  const { imageSource, city, country, username, profile } = props;
+  const { imageSource, city, country, name, profile } = props;
   
   return (
     <article className="photo-list__item">
@@ -14,7 +14,7 @@ const PhotoListItem = (props) => {
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={profile}/>
         <div className="photo-list__user-info">
-          {username}
+          {name}
           <div className="photo-list__user-location">{city}, {country}</div>
         </div>
       </div>
@@ -26,7 +26,7 @@ PhotoListItem.propTypes = {
   imageSource: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
   country: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   profile: PropTypes.string.isRequired
 };
 
