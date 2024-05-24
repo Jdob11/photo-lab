@@ -51,14 +51,14 @@ const App = () => {
 
   return (
     <div className="App">
-      {photos.map(photo => (
+      {photos.map(({ id, imageSource, location: { city, country }, username, profile }) => (
         <PhotoListItem
-          key={photo.id}
-          imageSource={photo.imageSource}
-          city={photo.location.city}
-          country={photo.location.country}
-          username={photo.username}
-          profile={photo.profile}
+          key={id}
+          imageSource={imageSource}
+          city={city}
+          country={country}
+          username={username}
+          profile={profile}
         />
       ))}
     </div>
