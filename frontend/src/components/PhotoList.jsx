@@ -4,7 +4,7 @@ import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = (props) => {
-  const { photos, favorite, toggleFavorite } = props;
+  const { photos, toggleFavorite, favoriteStatus } = props;
   const photosArray = photos.map(({ id, urls: { full, regular}, location: { city, country }, user:{username, name, profile} }) => (
     <PhotoListItem
       key={id}
@@ -13,8 +13,8 @@ const PhotoList = (props) => {
       country={country}
       name={name}
       profile={profile}
-      favorite={favorite}
-      toggleFavorite={toggleFavorite}
+      favorite={favoriteStatus[id] || false}
+      toggleFavorite={() => toggleFavorite(id)}
     />
   ))
 

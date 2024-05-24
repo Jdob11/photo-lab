@@ -6,17 +6,20 @@ import PhotoList from 'components/PhotoList';
 const HomeRoute = (props) => {
   const { photos, topics } = props;
 
-  const [favorite, setFavorite] = useState(false);
+  const [favoriteStatus, setFavoriteStatus] = useState({});
 
-  const toggleFavorite = () => {
-    console.log("favorite switched");
-    setFavorite(isFavorite => !isFavorite);
-  }
+  const toggleFavorite = (photoId) => {
+    setFavoriteStatus(prevStatus => {
+      const updatedStatus = { ...prevStatus };
+      updatedStatus[photoId] = !updatedStatus[photoId];
+      return updatedStatus;
+    });
+  };
 
   return (
     <div className="home-route">
       <TopNavigationBar topics={topics}/>
-      <PhotoList photos={photos} favorite={favorite} toggleFavorite={toggleFavorite}/>
+      <PhotoList photos={photos} favoriteStatus={favoriteStatus} toggleFavorite={toggleFavorite}/>
     </div>
   );
 };
