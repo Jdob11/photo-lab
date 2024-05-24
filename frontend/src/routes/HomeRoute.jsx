@@ -16,9 +16,14 @@ const HomeRoute = (props) => {
     });
   };
 
+  const isFavPhotoExist = () => {
+    const favoriteStatusArray = Object.values(favoriteStatus);
+    return favoriteStatusArray.includes(true);
+  }
+
   return (
     <div className="home-route">
-      <TopNavigationBar topics={topics} favoriteStatus={favoriteStatus}/>
+      <TopNavigationBar topics={topics} favoriteStatus={favoriteStatus} isFavPhotoExist={isFavPhotoExist}/>
       <PhotoList photos={photos} favoriteStatus={favoriteStatus} toggleFavorite={toggleFavorite}/>
     </div>
   );
