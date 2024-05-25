@@ -1,25 +1,12 @@
-import { React, useState, useMemo } from 'react';
+import React from 'react';
 import "../styles/HomeRoute.scss";
 import TopNavigationBar from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
+import useFavorites from 'hooks/useFavorite';
 
 const HomeRoute = (props) => {
   const { photos, topics, setDisplayModal } = props;
-
-  const [favoriteStatus, setFavoriteStatus] = useState({});
-
-  const toggleFavorite = (photoId) => {
-    setFavoriteStatus(prevStatus => {
-      const updatedStatus = { ...prevStatus };
-      updatedStatus[photoId] = !updatedStatus[photoId];
-      return updatedStatus;
-    });
-  };
-
-  const isFavPhotoExist = useMemo(() => {
-    const favoriteStatusArray = Object.values(favoriteStatus);
-    return favoriteStatusArray.includes(true);
-  }, [favoriteStatus]);
+  const { favoriteStatus, toggleFavorite, isFavPhotoExist } = useFavorites();
 
   return (
     <div className="home-route">
