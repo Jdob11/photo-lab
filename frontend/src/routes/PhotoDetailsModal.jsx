@@ -4,13 +4,13 @@ import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 
 const PhotoDetailsModal = (props) => {
-  const { isOpen, onClose, photo, photos } = props;
+  const { isOpen, onClose, selectedPhotoId, photos } = props;
   if (!isOpen) return null;
-  const currentPhoto = photos[photo - 1];
-  console.log('Id: ', currentPhoto.id);
-  console.log('Full Image: ', currentPhoto.urls.full);
-  console.log('Similar Photos: ', currentPhoto.similar_photos);
-
+  const currentPhoto = photos[selectedPhotoId - 1];
+  // console.log('Id: ', currentPhoto.id);
+  // console.log('Full Image: ', currentPhoto.urls.full);
+  // console.log('Similar Photos: ', currentPhoto.similar_photos);
+console.log(currentPhoto);
 
   return (
     <div className="photo-details-modal">
@@ -22,3 +22,5 @@ const PhotoDetailsModal = (props) => {
 };
 
 export default PhotoDetailsModal;
+
+

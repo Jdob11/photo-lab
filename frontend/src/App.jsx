@@ -28,7 +28,7 @@ const App = () => {
         <PhotoDetailsModal
           isOpen={!!selectedPhoto}
           onClose={closeModal}
-          photo={selectedPhoto}
+          selectedPhotoId={selectedPhoto}
           photos={photos}
         />
       )}
