@@ -9,7 +9,7 @@ import topics from 'mocks/topics';
 const App = () => {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
-  const openModal = (photo) => {
+  const setDisplayModal = (photo) => {
     setSelectedPhoto(photo);
   };
 
@@ -22,7 +22,7 @@ const App = () => {
       <HomeRoute
         photos={photos}
         topics={topics}
-        openModal={openModal}
+        setDisplayModal={setDisplayModal}
       />
       {selectedPhoto && (
         <PhotoDetailsModal

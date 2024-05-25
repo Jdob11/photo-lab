@@ -4,7 +4,7 @@ import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = (props) => {
-  const { photos, toggleFavorite, favoriteStatus, openModal } = props;
+  const { photos, toggleFavorite, favoriteStatus, setDisplayModal } = props;
   const photosArray = photos.map(({ id, urls: { full, regular}, location: { city, country }, user:{username, name, profile} }) => (
     <PhotoListItem
       key={id}
@@ -15,7 +15,7 @@ const PhotoList = (props) => {
       profile={profile}
       favorite={favoriteStatus[id] || false}
       toggleFavorite={() => toggleFavorite(id)}
-      openModal={() => openModal(full)}
+      setDisplayModal={() => setDisplayModal(full)}
     />
   ))
 
