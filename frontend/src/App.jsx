@@ -29,6 +29,7 @@ const App = () => {
           isOpen={!!selectedPhoto}
           onClose={closeModal}
           photo={selectedPhoto}
+          photos={photos}
         />
       )}
     </div>

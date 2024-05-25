@@ -15,7 +15,7 @@ const PhotoList = (props) => {
       profile={profile}
       favorite={favoriteStatus[id] || false}
       toggleFavorite={() => toggleFavorite(id)}
-      setDisplayModal={() => setDisplayModal(full)}
+      setDisplayModal={() => setDisplayModal(id)}
     />
   ))
 
