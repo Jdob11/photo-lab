@@ -5,18 +5,10 @@ import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import photos from 'mocks/photos';
 import topics from 'mocks/topics';
+import useModal from 'hooks/useModal';
 
 const App = () => {
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
-
-  const setDisplayModal = (photo) => {
-    setSelectedPhoto(photo);
-  };
-
-  const closeModal = () => {
-    setSelectedPhoto(null);
-  };
-
+  const { selectedPhoto, setDisplayModal, closeModal } = useModal();
   return (
     <div className="App">
       <HomeRoute
