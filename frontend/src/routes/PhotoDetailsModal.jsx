@@ -16,7 +16,7 @@ const extractPhotoDetails = (photo) => {
   return { id, fullImage, profileImage, name, city, country, similarPhotosArray: Object.values(similar_photos) };
 };
 
-const PhotoDetailsModal = ({ isOpen, onClose, selectedPhotoId, photos, favoriteStatus, toggleFavorite }) => {
+const PhotoDetailsModal = ({ isOpen, onClose, selectedPhotoId, photos, favorites, toggleFavorite }) => {
   if (!isOpen) return null;
 
   const currentPhoto = photos[selectedPhotoId - 1];
@@ -29,7 +29,7 @@ const PhotoDetailsModal = ({ isOpen, onClose, selectedPhotoId, photos, favoriteS
       </button>
       <div className='photo-details-modal__images'>
         <PhotoFavButton
-          favorite={favoriteStatus[id] || false}
+          favorite={favorites[id] || false}
           photoId={id}
           toggleFavorite={() => toggleFavorite(id)}
         />
@@ -48,7 +48,7 @@ const PhotoDetailsModal = ({ isOpen, onClose, selectedPhotoId, photos, favoriteS
         <div className='photo-details-modal__header'>Similar Photos</div>
         <PhotoList
           photos={similarPhotosArray}
-          favoriteStatus={favoriteStatus}
+          favorites={favorites}
           toggleFavorite={toggleFavorite}
         />
       </div>

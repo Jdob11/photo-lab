@@ -1,10 +1,10 @@
 import { useState, useMemo } from 'react';
 
 const useFavorite = () => {
-  const [favoriteStatus, setFavoriteStatus] = useState({});
+  const [favorites, setFavorites] = useState({});
 
   const toggleFavorite = (photoId) => {
-    setFavoriteStatus((prevStatus) => {
+    setFavorites((prevStatus) => {
       const updatedStatus = { ...prevStatus };
       updatedStatus[photoId] = !updatedStatus[photoId];
       return updatedStatus;
@@ -12,12 +12,12 @@ const useFavorite = () => {
   };
 
   const isFavPhotoExist = useMemo(() => {
-    const favoriteStatusArray = Object.values(favoriteStatus);
-    return favoriteStatusArray.includes(true);
-  }, [favoriteStatus]);
+    const favoritesArray = Object.values(favorites);
+    return favoritesArray.includes(true);
+  }, [favorites]);
 
   return {
-    favoriteStatus,
+    favorites,
     toggleFavorite,
     isFavPhotoExist,
   };
