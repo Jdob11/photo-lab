@@ -16,24 +16,25 @@ const useApplicationData = () => {
     return favoritesArray.includes(true);
   }, [favorites]);
 
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [selectedPhotoId, setSelectedPhotoId] = useState(null);
 
-  const setDisplayModal = (photo) => {
-    setSelectedPhoto(photo);
+  const openModalWithPhoto = (photoId) => {
+    setSelectedPhotoId(photoId);
   };
 
   const closeModal = () => {
-    setSelectedPhoto(null);
+    setSelectedPhotoId(null);
   };
 
   return {
     favorites,
     toggleFavorite,
     isFavPhotoExist,
-    selectedPhoto,
-    setDisplayModal,
+    selectedPhotoId,
+    openModalWithPhoto,
     closeModal,
   };
 };
 
 export default useApplicationData;
+

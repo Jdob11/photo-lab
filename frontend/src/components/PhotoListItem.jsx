@@ -5,14 +5,14 @@ import PhotoFavButton from "./PhotoFavButton";
 import PropTypes from 'prop-types';
 
 const PhotoListItem = (props) => {
-  const { imageSource, city, country, name, profile, favorite, toggleFavorite, setDisplayModal } = props;
+  const { imageSource, city, country, name, profile, favorite, toggleFavorite, openModalWithPhoto } = props;
   
   return (
     <article className="photo-list__item">
       <PhotoFavButton favorite={favorite} toggleFavorite={toggleFavorite}/>
       <img  className="photo-list__image"
             src={imageSource}
-            onClick={() => setDisplayModal({ imageSource, city, country, name, profile })} 
+            onClick={() => openModalWithPhoto({ imageSource, city, country, name, profile })} 
             alt={`${city}, ${country}`} 
       />
       <div className="photo-list__user-details">

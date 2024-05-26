@@ -4,7 +4,7 @@ import TopNavigationBar from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
 const HomeRoute = (props) => {
-  const { photos, topics, favorites, toggleFavorite, setDisplayModal, isFavPhotoExist } = props;
+  const { photos, topics, favorites, toggleFavorite, openModalWithPhoto, isFavPhotoExist } = props;
 
   return (
     <div className="home-route">
@@ -16,7 +16,7 @@ const HomeRoute = (props) => {
         photos={photos}
         favorites={favorites}
         toggleFavorite={toggleFavorite}
-        setDisplayModal={setDisplayModal}
+        openModalWithPhoto={openModalWithPhoto}
       />
     </div>
   );
