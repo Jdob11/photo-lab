@@ -6,11 +6,11 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import photos from 'mocks/photos';
 import topics from 'mocks/topics';
 import useModal from 'hooks/useModal';
-import useFavorite from 'hooks/useFavorite';
+import useFavorites from 'hooks/useFavorites';
 
 const App = () => {
   const { selectedPhoto, setDisplayModal, closeModal } = useModal();
-  const { favorites, toggleFavorite, isFavPhotoExist } = useFavorite();
+  const { favorites, toggleFavorite, isFavPhotoExist } = useFavorites();
   return (
     <div className="App">
       <HomeRoute
