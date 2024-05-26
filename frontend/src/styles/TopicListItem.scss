@@ -13,4 +13,9 @@
     text-decoration: overline;
     color: #111;
   }
+
+  &:active {
+    text-decoration: underline;
+    color: #686565
+  }
 }
