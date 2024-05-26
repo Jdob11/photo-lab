@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 
-const useFavorites = () => {
+const useFavorite = () => {
   const [favoriteStatus, setFavoriteStatus] = useState({});
 
   const toggleFavorite = (photoId) => {
@@ -23,4 +23,4 @@ const useFavorites = () => {
   };
 };
 
-export default useFavorites;
+export default useFavorite;

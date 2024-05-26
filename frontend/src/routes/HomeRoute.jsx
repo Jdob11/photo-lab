@@ -2,7 +2,6 @@ import React from 'react';
 import "../styles/HomeRoute.scss";
 import TopNavigationBar from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
-import useFavorites from 'hooks/useFavorite';
 
 const HomeRoute = (props) => {
   const { photos, topics, favoriteStatus, toggleFavorite, setDisplayModal, isFavPhotoExist } = props;
