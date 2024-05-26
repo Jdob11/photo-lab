@@ -5,8 +5,7 @@ import PhotoList from 'components/PhotoList';
 import useFavorites from 'hooks/useFavorite';
 
 const HomeRoute = (props) => {
-  const { photos, topics, setDisplayModal } = props;
-  const { favoriteStatus, toggleFavorite, isFavPhotoExist } = useFavorites();
+  const { photos, topics, favoriteStatus, toggleFavorite, setDisplayModal, isFavPhotoExist } = props;
 
   return (
     <div className="home-route">

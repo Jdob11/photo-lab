@@ -10,13 +10,16 @@ import useFavorites from 'hooks/useFavorite';
 
 const App = () => {
   const { selectedPhoto, setDisplayModal, closeModal } = useModal();
-  const { favoriteStatus, toggleFavorite } = useFavorites();
+  const { favoriteStatus, toggleFavorite, isFavPhotoExist } = useFavorites();
   return (
     <div className="App">
       <HomeRoute
         photos={photos}
         topics={topics}
+        favoriteStatus={favoriteStatus}
+        toggleFavorite={toggleFavorite}
         setDisplayModal={setDisplayModal}
+        isFavPhotoExist={isFavPhotoExist}
       />
       {selectedPhoto && (
         <PhotoDetailsModal
