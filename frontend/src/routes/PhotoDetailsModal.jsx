@@ -9,7 +9,7 @@ const PhotoDetailsModal = (props) => {
   const { isOpen, onClose, selectedPhotoId, photos, favoriteStatus, toggleFavorite } = props;
   if (!isOpen) return null;
   const currentPhoto = photos[selectedPhotoId - 1];
-  const { urls: { full: fullImage, regular: regularImage }, user: { profile: profileImage, name }, location: { city, country }, similar_photos } = currentPhoto;
+  const { urls: { full: fullImage }, user: { profile: profileImage, name }, location: { city, country }, similar_photos } = currentPhoto;
 
   const similarPhotosArray = Object.values(similar_photos);
 
@@ -21,7 +21,7 @@ const PhotoDetailsModal = (props) => {
       </button>
       <div className='photo-details-modal__images'>
         <PhotoFavButton favorite={favoriteStatus} toggleFavorite={toggleFavorite}/>
-        <img className='photo-details-modal__image' src={regularImage}/>
+        <img className='photo-details-modal__image' src={fullImage}/>
         <header className='photo-details-modal__header'>
           <div className='photo-details-modal__photographer-details'>
             <img className='photo-details-modal__photographer-profile' src={profileImage}/>
