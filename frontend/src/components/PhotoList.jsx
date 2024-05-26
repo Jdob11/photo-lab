@@ -5,7 +5,7 @@ import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = (props) => {
   const { photos, toggleFavorite, favoriteStatus, setDisplayModal } = props;
-  const photosArray = photos.map(({ id, urls: { full, regular}, location: { city, country }, user:{username, name, profile} }) => (
+  const photosArray = photos.map(({ id, urls: { regular }, location: { city, country }, user:{ name, profile} }) => (
     <PhotoListItem
       key={id}
       imageSource={regular}

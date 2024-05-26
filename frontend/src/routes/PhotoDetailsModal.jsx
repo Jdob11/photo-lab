@@ -3,18 +3,15 @@ import React from 'react';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
+import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
-  const { isOpen, onClose, selectedPhotoId, photos } = props;
+  const { isOpen, onClose, selectedPhotoId, photos, favoriteStatus, toggleFavorite } = props;
   if (!isOpen) return null;
   const currentPhoto = photos[selectedPhotoId - 1];
-  // console.log('Id: ', currentPhoto.id);
-  const fullImage = currentPhoto.urls.full;
-  const profileImage = currentPhoto.user.profile;
-  const name = currentPhoto.user.name;
-  const city = currentPhoto.location.city;
-  const country = currentPhoto.location.country;
-  const similarPhotos =  currentPhoto.similar_photos;
+  const { urls: { full: fullImage, regular: regularImage }, user: { profile: profileImage, name }, location: { city, country }, similar_photos } = currentPhoto;
+
+  const similarPhotosArray = Object.values(similar_photos);
 
   return (
     <>
@@ -23,7 +20,8 @@ const PhotoDetailsModal = (props) => {
         <img src={closeSymbol} alt='close symbol' />
       </button>
       <div className='photo-details-modal__images'>
-        <img className='photo-details-modal__image' src={fullImage}/>
+        <PhotoFavButton favorite={favoriteStatus} toggleFavorite={toggleFavorite}/>
+        <img className='photo-details-modal__image' src={regularImage}/>
         <header className='photo-details-modal__header'>
           <div className='photo-details-modal__photographer-details'>
             <img className='photo-details-modal__photographer-profile' src={profileImage}/>
@@ -36,6 +34,11 @@ const PhotoDetailsModal = (props) => {
           </div>
         </header>
         <div className="photo-details-modal__header">Similar Photos</div>
+          <PhotoList
+          photos={similarPhotosArray}
+          favoriteStatus={favoriteStatus}
+          toggleFavorite={toggleFavorite}
+          />
       </div>
     </div>
     </>
