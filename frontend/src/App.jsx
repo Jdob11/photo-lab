@@ -8,7 +8,7 @@ import topics from 'mocks/topics';
 import useApplicationData from 'hooks/useApplicationData';
 
 const App = () => {
-  const { selectedPhotoId, openModalWithPhoto, closeModal, favorites, toggleFavorite, isFavPhotoExist } = useApplicationData();
+  const { selectedPhoto, openModalWithPhoto, closeModal, favorites, toggleFavorite, isFavPhotoExist } = useApplicationData();
   return (
     <div className="App">
       <HomeRoute
@@ -19,14 +19,14 @@ const App = () => {
         openModalWithPhoto={openModalWithPhoto}
         isFavPhotoExist={isFavPhotoExist}
       />
-      {selectedPhotoId && (
+      {selectedPhoto && (
         <PhotoDetailsModal
-          isOpen={!!selectedPhotoId}
+          isOpen={!!selectedPhoto}
           onClose={closeModal}
-          selectedPhotoId={selectedPhotoId}
+          selectedPhoto={selectedPhoto}
           photos={photos}
           favorites={favorites}
-          favorite={favorites.some((favPhoto) => favPhoto.id === selectedPhotoId.id)}
+          favorite={favorites.some((favPhoto) => favPhoto.id === selectedPhoto.id)}
           toggleFavorite={toggleFavorite}
         />
       )}

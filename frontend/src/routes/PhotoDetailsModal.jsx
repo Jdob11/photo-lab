@@ -17,10 +17,10 @@ import PhotoFavButton from 'components/PhotoFavButton';
 // };
 
 const PhotoDetailsModal = (props) => {
-  const { isOpen, onClose, selectedPhotoId, favorites, favorite, toggleFavorite } = props;
+  const { isOpen, onClose, selectedPhoto, favorites, favorite, toggleFavorite } = props;
   if (!isOpen) return null;
-  const { id, full: fullImage, profile: profileImage, name, city, country, similar_photos } = selectedPhotoId;
-  console.log('selectedPhotoId: ', selectedPhotoId);
+  const { id, full: fullImage, profile: profileImage, name, city, country, similar_photos } = selectedPhoto;
+  console.log('selectedPhoto: ', selectedPhoto);
   const similarPhotosArray = Object.values(similar_photos);
 
   return (
@@ -29,7 +29,7 @@ const PhotoDetailsModal = (props) => {
         <img src={closeSymbol} alt='close symbol' />
       </button>
       <div className='photo-details-modal__images'>
-      <PhotoFavButton favorite={favorite} photo={selectedPhotoId} toggleFavorite={toggleFavorite}/>
+      <PhotoFavButton favorite={favorite} photo={selectedPhoto} toggleFavorite={toggleFavorite}/>
         <img className='photo-details-modal__image' src={fullImage} alt='Full size' />
         <header className='photo-details-modal__header'>
           <div className='photo-details-modal__photographer-details'>
