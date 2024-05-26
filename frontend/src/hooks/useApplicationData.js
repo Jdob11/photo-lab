@@ -22,8 +22,8 @@ const useApplicationData = () => {
 
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
-  const openModalWithPhoto = (photoId) => {
-    setSelectedPhoto(photoId);
+  const openModalWithPhoto = (photo) => {
+    setSelectedPhoto(photo);
   };
 
   const closeModal = () => {
