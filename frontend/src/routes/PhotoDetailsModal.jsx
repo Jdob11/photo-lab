@@ -4,23 +4,10 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 
-// const extractPhotoDetails = (photo) => {
-//   const {
-//     id,
-//     urls: { full: fullImage },
-//     user: { profile: profileImage, name },
-//     location: { city, country },
-//     similar_photos
-//   } = photo;
-
-//   return { id, fullImage, profileImage, name, city, country, similarPhotosArray: Object.values(similar_photos) };
-// };
-
 const PhotoDetailsModal = (props) => {
   const { isOpen, onClose, selectedPhoto, favorites, favorite, toggleFavorite } = props;
   if (!isOpen) return null;
-  const { id, full: fullImage, profile: profileImage, name, city, country, similar_photos } = selectedPhoto;
-  console.log('selectedPhoto: ', selectedPhoto);
+  const { full: fullImage, profile: profileImage, name, city, country, similar_photos } = selectedPhoto;
   const similarPhotosArray = Object.values(similar_photos);
 
   return (
