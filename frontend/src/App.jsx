@@ -26,6 +26,7 @@ const App = () => {
           selectedPhotoId={selectedPhotoId}
           photos={photos}
           favorites={favorites}
+          favorite={favorites.some((favPhoto) => favPhoto.id === selectedPhotoId.id)}
           toggleFavorite={toggleFavorite}
         />
       )}

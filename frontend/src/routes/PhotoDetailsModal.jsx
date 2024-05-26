@@ -4,23 +4,24 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 
-const extractPhotoDetails = (photo) => {
-  const {
-    id,
-    urls: { full: fullImage },
-    user: { profile: profileImage, name },
-    location: { city, country },
-    similar_photos
-  } = photo;
+// const extractPhotoDetails = (photo) => {
+//   const {
+//     id,
+//     urls: { full: fullImage },
+//     user: { profile: profileImage, name },
+//     location: { city, country },
+//     similar_photos
+//   } = photo;
 
-  return { id, fullImage, profileImage, name, city, country, similarPhotosArray: Object.values(similar_photos) };
-};
+//   return { id, fullImage, profileImage, name, city, country, similarPhotosArray: Object.values(similar_photos) };
+// };
 
-const PhotoDetailsModal = ({ isOpen, onClose, selectedPhotoId, photos, favorites, toggleFavorite }) => {
+const PhotoDetailsModal = (props) => {
+  const { isOpen, onClose, selectedPhotoId, favorites, favorite, toggleFavorite } = props;
   if (!isOpen) return null;
-
-  const currentPhoto = photos[selectedPhotoId - 1];
-  const { id, fullImage, profileImage, name, city, country, similarPhotosArray } = extractPhotoDetails(currentPhoto);
+  const { id, full: fullImage, profile: profileImage, name, city, country, similar_photos } = selectedPhotoId;
+  console.log('selectedPhotoId: ', selectedPhotoId);
+  const similarPhotosArray = Object.values(similar_photos);
 
   return (
     <div className='photo-details-modal'>
@@ -28,11 +29,7 @@ const PhotoDetailsModal = ({ isOpen, onClose, selectedPhotoId, photos, favorites
         <img src={closeSymbol} alt='close symbol' />
       </button>
       <div className='photo-details-modal__images'>
-        <PhotoFavButton
-          favorite={favorites[id] || false}
-          photoId={id}
-          toggleFavorite={() => toggleFavorite(id)}
-        />
+      <PhotoFavButton favorite={favorite} photo={selectedPhotoId} toggleFavorite={toggleFavorite}/>
         <img className='photo-details-modal__image' src={fullImage} alt='Full size' />
         <header className='photo-details-modal__header'>
           <div className='photo-details-modal__photographer-details'>

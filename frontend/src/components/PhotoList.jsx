@@ -5,7 +5,8 @@ import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = (props) => {
   const { photos, toggleFavorite, favorites, openModalWithPhoto } = props;
-  const photosArray = photos.map(({ id, urls: { regular }, location: { city, country }, user:{ name, profile} }) => (
+  console.log('favorites: ', favorites);
+  const photosArray = photos.map(({ id, urls: { regular, full }, location: { city, country }, user:{ name, profile}, similar_photos }) => (
     <PhotoListItem
       key={id}
       imageSource={regular}
@@ -13,9 +14,9 @@ const PhotoList = (props) => {
       country={country}
       name={name}
       profile={profile}
-      favorite={favorites[id] || false}
-      toggleFavorite={() => toggleFavorite(id)}
-      openModalWithPhoto={() => openModalWithPhoto(id)}
+      favorite={favorites.some((favPhoto) => favPhoto.id === id)}
+      toggleFavorite={() => toggleFavorite({ id, regular, city, country, name, profile })} 
+      openModalWithPhoto={() => openModalWithPhoto({ id, full, city, country, name, profile, similar_photos })}
     />
   ))
 

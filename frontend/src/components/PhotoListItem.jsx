@@ -6,13 +6,14 @@ import PropTypes from 'prop-types';
 
 const PhotoListItem = (props) => {
   const { imageSource, city, country, name, profile, favorite, toggleFavorite, openModalWithPhoto } = props;
+  const photo = { id: imageSource, urls: { regular: imageSource }, location: { city, country }, user: { name, profile } };
   
   return (
     <article className="photo-list__item">
-      <PhotoFavButton favorite={favorite} toggleFavorite={toggleFavorite}/>
+      <PhotoFavButton favorite={favorite} photo={photo} toggleFavorite={toggleFavorite}/>
       <img  className="photo-list__image"
             src={imageSource}
-            onClick={() => openModalWithPhoto({ imageSource, city, country, name, profile })} 
+            onClick={() => openModalWithPhoto(photo)} 
             alt={`${city}, ${country}`} 
       />
       <div className="photo-list__user-details">

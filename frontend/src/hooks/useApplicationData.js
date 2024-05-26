@@ -1,19 +1,23 @@
 import { useState, useMemo } from 'react';
 
 const useApplicationData = () => {
-  const [favorites, setFavorites] = useState({});
+  const [favorites, setFavorites] = useState([]);
 
-  const toggleFavorite = (photoId) => {
-    setFavorites((prevStatus) => {
-      const updatedStatus = { ...prevStatus };
-      updatedStatus[photoId] = !updatedStatus[photoId];
-      return updatedStatus;
+  const toggleFavorite = (photo) => {
+    if (!photo || !photo.id) return;
+    setFavorites((prevFavorites) => {
+      const isFavorite = prevFavorites.some((favPhoto) => favPhoto.id === photo.id);
+
+      if (isFavorite) {
+        return prevFavorites.filter((favPhoto) => favPhoto.id !== photo.id);
+      } else {
+        return [...prevFavorites, photo];
+      }
     });
   };
 
   const isFavPhotoExist = useMemo(() => {
-    const favoritesArray = Object.values(favorites);
-    return favoritesArray.includes(true);
+    return favorites.length > 0;
   }, [favorites]);
 
   const [selectedPhotoId, setSelectedPhotoId] = useState(null);
