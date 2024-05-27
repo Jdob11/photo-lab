@@ -9,6 +9,7 @@ import useApplicationData from 'hooks/useApplicationData';
 
 const App = () => {
   const { selectedPhoto, openModalWithPhoto, closeModal, favorites, toggleFavorite, isFavPhotoExist } = useApplicationData();
+  const isFavoritePhoto = favorites.some((favPhoto) => favPhoto.id === selectedPhoto.id);
   return (
     <div className="App">
       <HomeRoute
@@ -26,7 +27,7 @@ const App = () => {
           selectedPhoto={selectedPhoto}
           photos={photos}
           favorites={favorites}
-          favorite={favorites.some((favPhoto) => favPhoto.id === selectedPhoto.id)}
+          favorite={isFavoritePhoto}
           toggleFavorite={toggleFavorite}
         />
       )}

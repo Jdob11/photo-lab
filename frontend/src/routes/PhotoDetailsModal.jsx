@@ -6,10 +6,10 @@ import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
   const { isOpen, onClose, selectedPhoto, favorites, favorite, toggleFavorite } = props;
-  if (!isOpen) return null;
   const { full: fullImage, profile: profileImage, name, city, country, similar_photos } = selectedPhoto;
   const similarPhotosArray = Object.values(similar_photos);
-
+  
+  if (!isOpen) return null;
   return (
     <div className='photo-details-modal'>
       <button className='photo-details-modal__close-button' onClick={onClose}>
