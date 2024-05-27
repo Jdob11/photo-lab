@@ -1,6 +1,5 @@
 import React from 'react';
-
-import '../styles/TopNavigationBar.scss'
+import '../styles/TopNavigationBar.scss';
 import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 
@@ -11,11 +10,11 @@ const TopNavigationBar = (props) => {
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <div className='top-nav-bar'>
-        <TopicList topics={topics}/>
-        <FavBadge isFavPhotoExist={isFavPhotoExist}/>
+        <TopicList topics={topics} />
+        <FavBadge isFavPhotoExist={isFavPhotoExist} />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default TopNavigationBar;

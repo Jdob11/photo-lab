@@ -3,7 +3,11 @@ import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = (props) => {
-  const { photos, toggleFavorite, favorites, openModalWithPhoto } = props;
+  const { photos,
+          toggleFavorite,
+          favorites,
+          openModalWithPhoto
+        } = props;
 
   const photosArray = photos.map((photo) => {
     const {
