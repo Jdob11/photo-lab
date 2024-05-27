@@ -1,5 +1,4 @@
-import { React, useState } from 'react';
-
+import React, { useState } from 'react';
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
@@ -8,7 +7,15 @@ import topics from 'mocks/topics';
 import useApplicationData from 'hooks/useApplicationData';
 
 const App = () => {
-  const { selectedPhoto, openModalWithPhoto, closeModal, favorites, toggleFavorite, isFavPhotoExist } = useApplicationData();
+  const {
+          selectedPhoto,
+          openModalWithPhoto,
+          closeModal,
+          favorites,
+          toggleFavorite,
+          isFavPhotoExist
+        } = useApplicationData();
+  
   return (
     <div className="App">
       <HomeRoute

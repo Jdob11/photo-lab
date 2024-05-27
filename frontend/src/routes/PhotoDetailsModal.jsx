@@ -5,18 +5,39 @@ import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
-  const { isOpen, onClose, selectedPhoto, favorites, favorite, toggleFavorite } = props;
-  const { full: fullImage, profile: profileImage, name, city, country, similar_photos } = selectedPhoto;
+  const {
+          isOpen,
+          onClose,
+          selectedPhoto,
+          favorites,
+          favorite,
+          toggleFavorite
+        } = props;
+
+  const {
+          full: fullImage,
+          profile: profileImage,
+          name,
+          city,
+          country,
+          similar_photos
+        } = selectedPhoto;
+
   const similarPhotosArray = Object.values(similar_photos);
   
   if (!isOpen) return null;
+  
   return (
     <div className='photo-details-modal'>
       <button className='photo-details-modal__close-button' onClick={onClose}>
         <img src={closeSymbol} alt='close symbol' />
       </button>
       <div className='photo-details-modal__images'>
-      <PhotoFavButton favorite={favorite} photo={selectedPhoto} toggleFavorite={toggleFavorite}/>
+        <PhotoFavButton
+          favorite={favorite}
+          photo={selectedPhoto}
+          toggleFavorite={toggleFavorite}
+        />
         <img className='photo-details-modal__image' src={fullImage} alt='Full size' />
         <header className='photo-details-modal__header'>
           <div className='photo-details-modal__photographer-details'>
@@ -41,6 +62,3 @@ const PhotoDetailsModal = (props) => {
 };
 
 export default PhotoDetailsModal;
-
-
-

@@ -4,7 +4,14 @@ import TopNavigationBar from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
 const HomeRoute = (props) => {
-  const { photos, topics, favorites, toggleFavorite, openModalWithPhoto, isFavPhotoExist } = props;
+  const {
+          photos,
+          topics,
+          favorites,
+          toggleFavorite,
+          openModalWithPhoto,
+          isFavPhotoExist
+        } = props;
 
   return (
     <div className="home-route">
@@ -23,3 +30,4 @@ const HomeRoute = (props) => {
 };
 
 export default HomeRoute;
+
