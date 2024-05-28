@@ -10,7 +10,8 @@ const HomeRoute = (props) => {
           favorites,
           toggleFavorite,
           openModalWithPhoto,
-          isFavPhotoExist
+          isFavPhotoExist,
+          setTopic,
         } = props;
 
   return (
@@ -18,6 +19,7 @@ const HomeRoute = (props) => {
       <TopNavigationBar
         topics={topics}
         isFavPhotoExist={isFavPhotoExist}
+        setTopic={setTopic}
       />
       <PhotoList
         photos={photos}

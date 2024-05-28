@@ -7,6 +7,8 @@ export const ACTIONS = {
   CLOSE_MODAL: 'CLOSE_MODAL',
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
+  SET_CHOSEN_TOPIC: 'CHOSEN_TOPIC',
+  GET_PHOTOS_BY_TOPIC: 'GET_PHOTOS_BY_TOPIC',
 };
 //Revisit "Data Fetches with useEffect" AI feedback when time allows
 const reducer = (state, action) => {
@@ -36,11 +38,22 @@ const reducer = (state, action) => {
         ...state,
         photoData: action.payload
       };
-      case ACTIONS.SET_TOPIC_DATA:
-        return {
-          ...state,
-          topicData: action.payload
-        };
+    case ACTIONS.SET_TOPIC_DATA:
+      return {
+        ...state,
+        topicData: action.payload
+      };
+    case ACTIONS.SET_CHOSEN_TOPIC:
+      return {
+        ...state,
+        chosenTopic: action.payload
+      };
+    case ACTIONS.GET_PHOTOS_BY_TOPIC:
+      return {
+        ...state,
+        photoData: action.payload,
+        chosenTopic: null,
+      };
     default:
       return state;
   }
@@ -51,6 +64,7 @@ const initialState = {
   selectedPhoto: null,
   photoData: [],
   topicData:[],
+  chosenTopic: null,
 };
 
 const useApplicationData = () => {
@@ -69,6 +83,19 @@ const useApplicationData = () => {
       .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
       .catch((err) => console.log(err));
   }, []);
+
+  useEffect(() => {
+    if (state.chosenTopic) {
+      fetch(`/api/topics/photos/${state.chosenTopic}`)
+        .then(res => res.json())
+        .then(data => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPIC, payload: data }))
+        .catch((err) => console.log(err));
+    }
+  }, [state.chosenTopic]);
+
+  const setTopic = (chosenTopic) => {
+    dispatch({ type: ACTIONS.SET_CHOSEN_TOPIC, payload: chosenTopic });
+  };
 
   const toggleFavorite = (photo) => {
     if (!photo || !photo.id) return;
@@ -98,6 +125,7 @@ const useApplicationData = () => {
     isFavPhotoExist,
     openModalWithPhoto,
     closeModal,
+    setTopic,
   };
 };
 
