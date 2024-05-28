@@ -10,12 +10,18 @@
   color: #2b2b2b;
 
   &:hover {
+    cursor: pointer;
     text-decoration: overline;
     color: #111;
   }
 
   &:active {
     text-decoration: underline;
-    color: #686565
+    color: #995757
+  }
+
+  &.active-span {
+    text-decoration: underline;
+    color: #995757;
   }
 }

@@ -15,6 +15,7 @@ const App = () => {
           toggleFavorite,
           isFavPhotoExist,
           setTopic,
+          chosenTopic,
         } = useApplicationData();
   
   return (
@@ -27,6 +28,7 @@ const App = () => {
         openModalWithPhoto={openModalWithPhoto}
         isFavPhotoExist={isFavPhotoExist}
         setTopic={setTopic}
+        chosenTopic={chosenTopic}
       />
       {selectedPhoto && (
         <PhotoDetailsModal

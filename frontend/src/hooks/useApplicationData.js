@@ -52,7 +52,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         photoData: action.payload,
-        chosenTopic: null,
+        // chosenTopic: null,
       };
     default:
       return state;

@@ -12,6 +12,7 @@ const HomeRoute = (props) => {
           openModalWithPhoto,
           isFavPhotoExist,
           setTopic,
+          chosenTopic,
         } = props;
 
   return (
@@ -20,6 +21,7 @@ const HomeRoute = (props) => {
         topics={topics}
         isFavPhotoExist={isFavPhotoExist}
         setTopic={setTopic}
+        chosenTopic={chosenTopic}
       />
       <PhotoList
         photos={photos}
