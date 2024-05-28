@@ -8,7 +8,7 @@ export const ACTIONS = {
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
 };
-
+//Revisit "Data Fetches with useEffect" AI feedback when time allows
 const reducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.OPEN_MODAL_WITH_PHOTO:
