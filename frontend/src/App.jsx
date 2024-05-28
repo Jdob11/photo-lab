@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
-import PhotoDetailsModal from 'routes/PhotoDetailsModal';
-import photos from 'mocks/photos';
 import topics from 'mocks/topics';
+import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
 
 const App = () => {
   const {
+          photoData,
           selectedPhoto,
           openModalWithPhoto,
           closeModal,
@@ -19,7 +19,7 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute
-        photos={photos}
+        photos={photoData}
         topics={topics}
         favorites={favorites}
         toggleFavorite={toggleFavorite}

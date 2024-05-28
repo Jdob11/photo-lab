@@ -1,10 +1,11 @@
-import { useReducer, useMemo } from 'react';
+import { useReducer, useMemo, useEffect } from 'react';
 
 export const ACTIONS = {
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
   FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
   OPEN_MODAL_WITH_PHOTO: 'OPEN_MODAL_WITH_PHOTO',
-  CLOSE_MODAL: 'CLOSE_MODAL'
+  CLOSE_MODAL: 'CLOSE_MODAL',
+  SET_PHOTO_DATA: 'SET_PHOTO_DATA',
 };
 
 const reducer = (state, action) => {
@@ -29,6 +30,11 @@ const reducer = (state, action) => {
         ...state,
         favorites: state.favorites.filter(photo => photo.id !== action.payload.id),
       };
+    case ACTIONS.SET_PHOTO_DATA:
+      return {
+        ...state,
+        photoData: action.payload
+      };
     default:
       return state;
   }
@@ -37,10 +43,19 @@ const reducer = (state, action) => {
 const initialState = {
   favorites: [],
   selectedPhoto: null,
+  photoData: [],
+  topicData:[],
 };
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    fetch('/api/photos')
+      .then((res) => res.json())
+      .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+      .catch((err) => console.log(err));
+  }, []);
 
   const toggleFavorite = (photo) => {
     if (!photo || !photo.id) return;
