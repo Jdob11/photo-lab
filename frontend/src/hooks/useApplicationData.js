@@ -6,6 +6,7 @@ export const ACTIONS = {
   OPEN_MODAL_WITH_PHOTO: 'OPEN_MODAL_WITH_PHOTO',
   CLOSE_MODAL: 'CLOSE_MODAL',
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
+  SET_TOPIC_DATA: 'SET_TOPIC_DATA',
 };
 
 const reducer = (state, action) => {
@@ -35,6 +36,11 @@ const reducer = (state, action) => {
         ...state,
         photoData: action.payload
       };
+      case ACTIONS.SET_TOPIC_DATA:
+        return {
+          ...state,
+          topicData: action.payload
+        };
     default:
       return state;
   }
@@ -54,6 +60,13 @@ const useApplicationData = () => {
     fetch('/api/photos')
       .then((res) => res.json())
       .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+      .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    fetch('/api/topics')
+      .then((res) => res.json())
+      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
       .catch((err) => console.log(err));
   }, []);
 
