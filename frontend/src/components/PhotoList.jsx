@@ -31,7 +31,7 @@ const PhotoList = (props) => {
         profile={profile}
         favorite={isFavorite}
         toggleFavorite={() => toggleFavorite(photoObjectForToggle)}
-        openModalWithPhoto={() => openModalWithPhoto(photoObjectForModal)}
+        openModalWithPhoto={openModalWithPhoto ? () => openModalWithPhoto(photoObjectForModal) : undefined}
       />
     );
   });

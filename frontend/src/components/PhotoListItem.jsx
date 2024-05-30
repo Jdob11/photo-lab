@@ -19,6 +19,11 @@ const PhotoListItem = (props) => {
     location: { city, country },
     user: { name, profile }
   };
+  const handleClick = () => {
+    if (openModalWithPhoto) {
+      openModalWithPhoto()
+    }
+  }
 
   return (
     <article className="photo-list__item">
@@ -26,7 +31,7 @@ const PhotoListItem = (props) => {
       <img
         className="photo-list__image"
         src={imageSource}
-        onClick={() => openModalWithPhoto(photo)}
+        onClick={handleClick}
         alt={`Photo from ${city}, ${country}, taken by ${name}`}
       />
       <div className="photo-list__user-details">
@@ -48,7 +53,6 @@ PhotoListItem.propTypes = {
   profile: PropTypes.string.isRequired,
   favorite: PropTypes.bool.isRequired,
   toggleFavorite: PropTypes.func.isRequired,
-  openModalWithPhoto: PropTypes.func.isRequired
 };
 
 export default PhotoListItem;

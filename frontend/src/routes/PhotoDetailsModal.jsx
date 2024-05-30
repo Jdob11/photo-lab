@@ -55,6 +55,7 @@ const PhotoDetailsModal = (props) => {
           photos={similarPhotosArray}
           favorites={favorites}
           toggleFavorite={toggleFavorite}
+          openPhotosWithModal={null}
         />
       </div>
     </div>
