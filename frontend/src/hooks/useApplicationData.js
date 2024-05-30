@@ -9,8 +9,10 @@ export const ACTIONS = {
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SET_CHOSEN_TOPIC: 'CHOSEN_TOPIC',
   GET_PHOTOS_BY_TOPIC: 'GET_PHOTOS_BY_TOPIC',
+  SET_ERROR: 'SET_ERROR',
+  CLEAR_ERROR: 'CLEAR_ERROR',
 };
-//Revisit "Data Fetches with useEffect" AI feedback when time allows
+
 const reducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.OPEN_MODAL_WITH_PHOTO:
@@ -36,26 +38,39 @@ const reducer = (state, action) => {
     case ACTIONS.SET_PHOTO_DATA:
       return {
         ...state,
-        photoData: action.payload
+        photoData: action.payload,
+        error: null,
       };
     case ACTIONS.SET_TOPIC_DATA:
       return {
         ...state,
-        topicData: action.payload
+        topicData: action.payload,
+        error: null,
       };
     case ACTIONS.SET_CHOSEN_TOPIC:
       return {
         ...state,
-        chosenTopic: action.payload
+        chosenTopic: action.payload,
+        error: null,
       };
     case ACTIONS.GET_PHOTOS_BY_TOPIC:
       return {
         ...state,
         photoData: action.payload,
-        // chosenTopic: null,
+        error: null,
+      };
+    case ACTIONS.SET_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    case ACTIONS.CLEAR_ERROR:
+      return {
+        ...state,
+        error: null,
       };
     default:
-      return state;
+      throw new Error(`Error: ${action.type} does not exist`);
   }
 };
 
@@ -63,8 +78,9 @@ const initialState = {
   favorites: [],
   selectedPhoto: null,
   photoData: [],
-  topicData:[],
+  topicData: [],
   chosenTopic: null,
+  error: null,
 };
 
 const useApplicationData = () => {
@@ -74,22 +90,31 @@ const useApplicationData = () => {
     fetch('/api/photos')
       .then((res) => res.json())
       .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        dispatch({ type: ACTIONS.SET_ERROR, payload: 'Failed to fetch photos.' });
+        console.log('Error: ', err);
+      })
   }, []);
 
   useEffect(() => {
     fetch('/api/topics')
       .then((res) => res.json())
       .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        dispatch({ type: ACTIONS.SET_ERROR, payload: 'Failed to fetch topics.' });
+        console.log('Error: ', err);
+      })
   }, []);
 
   useEffect(() => {
     if (state.chosenTopic) {
       fetch(`/api/topics/photos/${state.chosenTopic}`)
-        .then(res => res.json())
-        .then(data => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPIC, payload: data }))
-        .catch((err) => console.log(err));
+        .then((res) => res.json())
+        .then((data) => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPIC, payload: data }))
+        .catch((err) => {
+          dispatch({ type: ACTIONS.SET_ERROR, payload: 'Failed to fetch photos for chosen topic.' });
+          console.log('Error: ', err);
+        })
     }
   }, [state.chosenTopic]);
 
@@ -99,7 +124,7 @@ const useApplicationData = () => {
 
   const toggleFavorite = (photo) => {
     if (!photo || !photo.id) return;
-    const isFavorite = state.favorites.some(favPhoto => favPhoto.id === photo.id);
+    const isFavorite = state.favorites.some((favPhoto) => favPhoto.id === photo.id);
     if (isFavorite) {
       dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: photo });
     } else {
