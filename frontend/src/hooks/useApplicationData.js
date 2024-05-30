@@ -1,4 +1,4 @@
-import { useReducer, useMemo, useEffect } from 'react';
+import { useReducer, useEffect } from 'react';
 
 export const ACTIONS = {
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
@@ -132,9 +132,7 @@ const useApplicationData = () => {
     }
   };
 
-  const isFavPhotoExist = useMemo(() => {
-    return state.favorites.length > 0;
-  }, [state.favorites]);
+  const isFavPhotoExist = state.favorites.length > 0;
 
   const openModalWithPhoto = (photo) => {
     dispatch({ type: ACTIONS.OPEN_MODAL_WITH_PHOTO, payload: photo });
