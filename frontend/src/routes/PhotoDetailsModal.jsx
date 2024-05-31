@@ -19,22 +19,22 @@ import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
   const {
-          isOpen,
-          onClose,
-          selectedPhoto,
-          favorites,
-          favorite,
-          toggleFavorite
-        } = props;
+    isOpen,
+    onClose,
+    selectedPhoto,
+    favorites,
+    favorite,
+    toggleFavorite
+  } = props;
 
   const {
-          full: fullImage,
-          profile: profileImage,
-          name,
-          city,
-          country,
-          similar_photos
-        } = selectedPhoto;
+    full: fullImage,
+    profile: profileImage,
+    name,
+    city,
+    country,
+    similar_photos
+  } = selectedPhoto;
 
   const similarPhotosArray = Object.values(similar_photos);
   

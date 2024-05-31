@@ -19,21 +19,24 @@ import PhotoFavButton from "./PhotoFavButton";
  */
 
 const PhotoListItem = (props) => {
-  const { imageSource,
-          city,
-          country,
-          name,
-          profile,
-          favorite,
-          toggleFavorite,
-          openModalWithPhoto
-        } = props;
+  const {
+    imageSource,
+    city,
+    country,
+    name,
+    profile,
+    favorite,
+    toggleFavorite,
+    openModalWithPhoto
+  } = props;
+
   const photo = {
     id: imageSource,
     urls: { regular: imageSource },
     location: { city, country },
     user: { name, profile }
   };
+  
   const handleClick = () => {
     if (openModalWithPhoto) {
       openModalWithPhoto()

@@ -20,15 +20,15 @@ import PhotoList from 'components/PhotoList';
 
 const HomeRoute = (props) => {
   const {
-          photos,
-          topics,
-          favorites,
-          toggleFavorite,
-          openModalWithPhoto,
-          isFavPhotoExist,
-          setTopic,
-          chosenTopic,
-        } = props;
+    photos,
+    topics,
+    favorites,
+    toggleFavorite,
+    openModalWithPhoto,
+    isFavPhotoExist,
+    setTopic,
+    chosenTopic,
+  } = props;
 
   return (
     <div className="home-route">

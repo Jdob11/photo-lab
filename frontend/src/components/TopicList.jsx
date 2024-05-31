@@ -13,7 +13,12 @@ import TopicListItem from "./TopicListItem";
  */
 
 const TopicList = (props) => {
-  const { topics, setTopic, chosenTopic } = props;
+  const {
+    topics,
+    setTopic,
+    chosenTopic
+  } = props;
+  
   const topicsArray = topics.map(({ id, title }) => (
     <TopicListItem
       key={id}

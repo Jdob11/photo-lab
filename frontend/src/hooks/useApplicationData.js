@@ -1,6 +1,21 @@
 import { useReducer, useEffect } from 'react';
 
-export const ACTIONS = {
+/**
+ * Action types for the application.
+ * @typedef {Object} ACTIONS
+ * @property {string} FAV_PHOTO_ADDED - Action for adding a favorite photo.
+ * @property {string} FAV_PHOTO_REMOVED - Action for removing a favorite photo.
+ * @property {string} OPEN_MODAL_WITH_PHOTO - Action for opening modal with a specific photo.
+ * @property {string} CLOSE_MODAL - Action for closing the modal.
+ * @property {string} SET_PHOTO_DATA - Action for setting photo data.
+ * @property {string} SET_TOPIC_DATA - Action for setting topic data.
+ * @property {string} SET_CHOSEN_TOPIC - Action for setting the chosen topic.
+ * @property {string} GET_PHOTOS_BY_TOPIC - Action for fetching photos by topic.
+ * @property {string} SET_ERROR - Action for setting an error.
+ * @property {string} CLEAR_ERROR - Action for clearing an error.
+ */
+
+const ACTIONS = {
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
   FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
   OPEN_MODAL_WITH_PHOTO: 'OPEN_MODAL_WITH_PHOTO',
@@ -13,58 +28,78 @@ export const ACTIONS = {
   CLEAR_ERROR: 'CLEAR_ERROR',
 };
 
+/**
+ * Reducer function to handle state changes based on dispatched actions.
+ * @param {Object} state - Current state of the application.
+ * @param {Object} action - Dispatched action to perform state changes.
+ * @returns {Object} New state after performing the action.
+ */
+
 const reducer = (state, action) => {
+  const {
+    FAV_PHOTO_ADDED,
+    FAV_PHOTO_REMOVED,
+    OPEN_MODAL_WITH_PHOTO,
+    CLOSE_MODAL,
+    SET_PHOTO_DATA,
+    SET_TOPIC_DATA,
+    SET_CHOSEN_TOPIC,
+    GET_PHOTOS_BY_TOPIC,
+    SET_ERROR,
+    CLEAR_ERROR
+  } = ACTIONS;
+
   switch (action.type) {
-    case ACTIONS.OPEN_MODAL_WITH_PHOTO:
+    case OPEN_MODAL_WITH_PHOTO:
       return {
         ...state,
         selectedPhoto: action.payload,
       };
-    case ACTIONS.CLOSE_MODAL:
+    case CLOSE_MODAL:
       return {
         ...state,
         selectedPhoto: null,
       };
-    case ACTIONS.FAV_PHOTO_ADDED:
+    case FAV_PHOTO_ADDED:
       return {
         ...state,
         favorites: [...state.favorites, action.payload],
       };
-    case ACTIONS.FAV_PHOTO_REMOVED:
+    case FAV_PHOTO_REMOVED:
       return {
         ...state,
         favorites: state.favorites.filter(photo => photo.id !== action.payload.id),
       };
-    case ACTIONS.SET_PHOTO_DATA:
+    case SET_PHOTO_DATA:
       return {
         ...state,
         photoData: action.payload,
         error: null,
       };
-    case ACTIONS.SET_TOPIC_DATA:
+    case SET_TOPIC_DATA:
       return {
         ...state,
         topicData: action.payload,
         error: null,
       };
-    case ACTIONS.SET_CHOSEN_TOPIC:
+    case SET_CHOSEN_TOPIC:
       return {
         ...state,
         chosenTopic: action.payload,
         error: null,
       };
-    case ACTIONS.GET_PHOTOS_BY_TOPIC:
+    case GET_PHOTOS_BY_TOPIC:
       return {
         ...state,
         photoData: action.payload,
         error: null,
       };
-    case ACTIONS.SET_ERROR:
+    case SET_ERROR:
       return {
         ...state,
         error: action.payload,
       };
-    case ACTIONS.CLEAR_ERROR:
+    case CLEAR_ERROR:
       return {
         ...state,
         error: null,
@@ -73,6 +108,11 @@ const reducer = (state, action) => {
       throw new Error(`Error: ${action.type} does not exist`);
   }
 };
+
+/**
+ * Initial state of the application.
+ * @type {Object}
+ */
 
 const initialState = {
   favorites: [],
@@ -83,10 +123,15 @@ const initialState = {
   error: null,
 };
 
+/**
+ * Custom hook for managing application data and state.
+ * @returns {Object} State and functions for manipulating the state.
+ */
+
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  useEffect(() => {
+  useEffect(() => {   // Fetch initial photo data
     fetch('/api/photos')
       .then((res) => res.json())
       .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
@@ -96,7 +141,7 @@ const useApplicationData = () => {
       })
   }, []);
 
-  useEffect(() => {
+  useEffect(() => { // Fetch initial topic data
     fetch('/api/topics')
       .then((res) => res.json())
       .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
@@ -106,7 +151,7 @@ const useApplicationData = () => {
       })
   }, []);
 
-  useEffect(() => {
+  useEffect(() => { // Fetch photos based on chosen topic
     if (state.chosenTopic) {
       fetch(`/api/topics/photos/${state.chosenTopic}`)
         .then((res) => res.json())
@@ -118,9 +163,19 @@ const useApplicationData = () => {
     }
   }, [state.chosenTopic]);
 
+    /**
+   * Set the chosen topic.
+   * @param {string} chosenTopic - The topic to set as chosen.
+   */
+
   const setTopic = (chosenTopic) => {
     dispatch({ type: ACTIONS.SET_CHOSEN_TOPIC, payload: chosenTopic });
   };
+
+  /**
+   * Toggle favorite status of a photo.
+   * @param {Object} photo - The photo object to toggle favorite status for.
+   */
 
   const toggleFavorite = (photo) => {
     if (!photo || !photo.id) return;
@@ -132,11 +187,25 @@ const useApplicationData = () => {
     }
   };
 
+    /**
+   * Check if there are favorite photos.
+   * @type {boolean}
+   */
+
   const isFavPhotoExist = state.favorites.length > 0;
+
+  /**
+   * Open modal with a specific photo.
+   * @param {Object} photo - The photo object to open the modal with.
+   */
 
   const openModalWithPhoto = (photo) => {
     dispatch({ type: ACTIONS.OPEN_MODAL_WITH_PHOTO, payload: photo });
   };
+
+    /**
+   * Close the modal.
+   */
 
   const closeModal = () => {
     dispatch({ type: ACTIONS.CLOSE_MODAL });

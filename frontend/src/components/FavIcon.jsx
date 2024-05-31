@@ -9,7 +9,12 @@ import React from 'react';
  * @returns {JSX.Element} The JSX element representing the heart icon.
  */
 
-const FavIcon = ({ displayAlert, selected }) => {
+const FavIcon = (props) => {
+  const {
+    displayAlert,
+    selected
+  } = props;
+
   return (
     <svg
       width="26"

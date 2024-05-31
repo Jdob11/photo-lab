@@ -11,7 +11,9 @@ import '../styles/FavBadge.scss';
  * @returns {JSX.Element} The JSX element representing the favorite badge.
  */
 
-const FavBadge = ({ isFavPhotoExist }) => {
+const FavBadge = (props) => {
+  const { isFavPhotoExist } = props;
+  
   return (
     <div className='fav-badge'>
       <FavIcon

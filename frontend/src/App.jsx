@@ -11,17 +11,17 @@ import useApplicationData from 'hooks/useApplicationData';
 
 const App = () => {
   const {
-          photoData,
-          topicData,
-          selectedPhoto,
-          openModalWithPhoto,
-          closeModal,
-          favorites,
-          toggleFavorite,
-          isFavPhotoExist,
-          setTopic,
-          chosenTopic,
-        } = useApplicationData();
+    photoData,
+    topicData,
+    selectedPhoto,
+    openModalWithPhoto,
+    closeModal,
+    favorites,
+    toggleFavorite,
+    isFavPhotoExist,
+    setTopic,
+    chosenTopic,
+  } = useApplicationData();
   
   return (
     <div className="App">
