@@ -8,10 +8,10 @@ PhotoLabs utilizes React for the frontend development, providing a dynamic and r
 
 ## Final Product
 
-![Screenshot of Home Page](need github link)
-![Screenshot of Photo Details Modal](need github link)
-![Screenshot of Topic List](need github link)
-![Screenshot of Favorites Notification](need github link)
+![Screenshot of Home Page](https://github.com/Jdob11/photo-lab/blob/main/frontend/public/docs/PhotoLabs%20Home%20Screen.png?raw=true)
+![Screenshot of Photo Details Modal](https://github.com/Jdob11/photo-lab/blob/main/frontend/public/docs/PhotoLabs%20Photo%20Details%20Modal.png?raw=true)
+![Screenshot of Topic List](https://github.com/Jdob11/photo-lab/blob/main/frontend/public/docs/PhotoLabs%20Topics%20List.png?raw=true)
+![Screenshot of Favorites Notification](https://github.com/Jdob11/photo-lab/blob/main/frontend/public/docs/PhotoLabs%20Favorites%20Notification.png?raw=true)
 
 ## Project Information
 
@@ -20,67 +20,6 @@ This project was developed as part of a larger application, representing a key f
 ## Note to Contributors
 
 If you're considering contributing to this project or using it as a reference, please be aware that it was developed for demonstration purposes and may not encompass all production-ready features or optimizations. Contributions and feedback are welcome, but please keep in mind the context in which this project was created.
-
-## File Structure
-## Backend
-
-The backend directory contains the server-side code for the application.
-
-### Structure
-
-- **src**: Contains the source code files.
-  - **db**: Contains database-related files.
-    - **schema**: Contains SQL schema files for different environments.
-      - create.sql
-      - development.sql
-      - production.sql
-      - test.sql
-    - index.js: Main database initialization file.
-  - **routes**: Contains route handlers for different endpoints.
-    - **__tests__**: Contains test files for route handlers.
-      - days.test.js
-      - interviewers.test.js
-      - photos.js
-      - topics.js
-    - application.js: Main application route handler.
-    - environment.js: Environment configuration file.
-    - index.js: Main route handler file.
-    - setupTests.js: Test setup file.
-- **public/images**: Directory for storing images used in the application.
-
-### Files
-
-- .env.example: Example environment variable configuration file.
-- README.md: Documentation file (you're reading it!).
-- package-lock.json: Auto-generated file for npm's dependency tree.
-- package.json: File containing project metadata and dependencies.
-
-## Frontend
-
-The frontend directory contains the client-side code for the application.
-
-### Structure
-
-- **public**: Contains static assets used by the frontend.
-  - *(photos here)*: Placeholder for actual photo files.
-- **src**: Contains the source code files.
-  - **assets**: Directory for storing static assets used by the frontend.
-    - closeSymbol.svg: SVG icon used in the project.
-  - **components**: Directory containing React components for the frontend.
-  - **hooks**: Directory containing custom React hooks.
-  - **mocks**: Directory containing mock data for testing.
-  - **routes**: Directory containing React components for different routes.
-  - **styles**: Directory containing SCSS files for styling React components.
-- App.jsx: Main application component for the frontend.
-- App.scss: SCSS file for styling the App component.
-- index.css: CSS file for global styles.
-- index.js: Entry point for the frontend application.
-- setupTests.js: Setup file for frontend tests.
-- .eslintrc.json: ESLint configuration file.
-- .gitignore: File containing a list of files and directories to ignore in Git.
-- jsconfig.json: Configuration file for JavaScript projects.
-- package-lock.json: Auto-generated file for npm's dependency tree.
-
 
 ## Installation
 
