@@ -23,7 +23,8 @@ const PhotoDetailsModal = (props) => {
     selectedPhoto,
     favorites,
     favorite,
-    toggleFavorite
+    toggleFavorite,
+    photoData,
   } = props;
 
   const {
@@ -64,6 +65,7 @@ const PhotoDetailsModal = (props) => {
         </header>
         <div className='photo-details-modal__header'>Similar Photos</div>
         <PhotoList
+          photoData={photoData}
           photos={similarPhotosArray}
           favorites={favorites}
           toggleFavorite={toggleFavorite}
@@ -76,7 +78,7 @@ const PhotoDetailsModal = (props) => {
 PhotoDetailsModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   selectedPhoto: PropTypes.object.isRequired,
-  favorites: PropTypes.array.isRequired,
+  favorites: PropTypes.array,
   favorite: PropTypes.bool.isRequired,
   toggleFavorite: PropTypes.func.isRequired,
 };

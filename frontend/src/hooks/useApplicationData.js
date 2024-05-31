@@ -194,6 +194,10 @@ const useApplicationData = () => {
 
   const isFavPhotoExist = state.favorites.length > 0;
 
+  const viewFavorites = (favoritePhotosArray) => {
+    dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: favoritePhotosArray })
+  }
+
   /**
    * Open modal with a specific photo.
    * @param {Object} photo - The photo object to open the modal with.
@@ -218,6 +222,7 @@ const useApplicationData = () => {
     openModalWithPhoto,
     closeModal,
     setTopic,
+    viewFavorites,
   };
 };
 

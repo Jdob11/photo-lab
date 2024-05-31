@@ -21,7 +21,7 @@ import PhotoList from 'components/PhotoList';
 
 const HomeRoute = (props) => {
   const {
-    photos,
+    photoData,
     topics,
     favorites,
     toggleFavorite,
@@ -40,7 +40,7 @@ const HomeRoute = (props) => {
         chosenTopic={chosenTopic}
       />
       <PhotoList
-        photos={photos}
+        photoData={photoData}
         favorites={favorites}
         toggleFavorite={toggleFavorite}
         openModalWithPhoto={openModalWithPhoto}
@@ -50,7 +50,7 @@ const HomeRoute = (props) => {
 };
 
 HomeRoute.propTypes = {
-  photos: PropTypes.array.isRequired,
+  photoData: PropTypes.array.isRequired,
   topics: PropTypes.array.isRequired,
   favorites: PropTypes.array.isRequired,
   toggleFavorite: PropTypes.func.isRequired,

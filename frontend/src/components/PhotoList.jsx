@@ -16,13 +16,13 @@ import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = (props) => {
   const {
-    photos,
+    photoData,
     toggleFavorite,
     favorites,
     openModalWithPhoto
   } = props;
 
-  const photosArray = photos.map((photo) => {
+  const photosArray = photoData.map((photo) => {
     const {
       id,
       urls: { regular, full },
@@ -53,9 +53,9 @@ const PhotoList = (props) => {
 };
 
 PhotoList.propTypes = {
-  photos: PropTypes.array.isRequired,
+  photoData: PropTypes.array.isRequired,
   toggleFavorite: PropTypes.func.isRequired,
-  favorites: PropTypes.array.isRequired,
+  favorites: PropTypes.array,
   openModalWithPhoto: PropTypes.func
 };
 

@@ -26,7 +26,7 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute
-        photos={photoData}
+        photoData={photoData}
         topics={topicData}
         favorites={favorites}
         toggleFavorite={toggleFavorite}
@@ -37,6 +37,7 @@ const App = () => {
       />
       {selectedPhoto && (
         <PhotoDetailsModal
+          photoData={photoData}
           onClose={closeModal}
           selectedPhoto={selectedPhoto}
           favorites={favorites}
