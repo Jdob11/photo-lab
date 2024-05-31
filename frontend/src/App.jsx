@@ -37,10 +37,8 @@ const App = () => {
       />
       {selectedPhoto && (
         <PhotoDetailsModal
-          isOpen={!!selectedPhoto}
           onClose={closeModal}
           selectedPhoto={selectedPhoto}
-          photos={photoData}
           favorites={favorites}
           favorite={favorites.some((favPhoto) => favPhoto.id === selectedPhoto.id)}
           toggleFavorite={toggleFavorite}

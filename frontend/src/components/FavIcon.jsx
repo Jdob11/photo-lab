@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * The FavIcon component responsible for displaying a heart icon indicating favorite status.
@@ -43,6 +44,11 @@ const FavIcon = (props) => {
       )}
     </svg>
   );
+};
+
+FavIcon.propTypes = {
+  displayAlert: PropTypes.bool,
+  selected: PropTypes.bool.isRequired,
 };
 
 export default FavIcon;

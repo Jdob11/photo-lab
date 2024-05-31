@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import FavIcon from './FavIcon';
 
 import '../styles/FavBadge.scss';
@@ -13,7 +14,7 @@ import '../styles/FavBadge.scss';
 
 const FavBadge = (props) => {
   const { isFavPhotoExist } = props;
-  
+
   return (
     <div className='fav-badge'>
       <FavIcon
@@ -22,6 +23,10 @@ const FavBadge = (props) => {
       />
     </div>
   );
+};
+
+FavBadge.propTypes = {
+  isFavPhotoExist: PropTypes.bool.isRequired,
 };
 
 export default FavBadge;

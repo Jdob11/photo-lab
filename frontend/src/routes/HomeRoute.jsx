@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import "../styles/HomeRoute.scss";
 import TopNavigationBar from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
@@ -46,6 +47,17 @@ const HomeRoute = (props) => {
       />
     </div>
   );
+};
+
+HomeRoute.propTypes = {
+  photos: PropTypes.array.isRequired,
+  topics: PropTypes.array.isRequired,
+  favorites: PropTypes.array.isRequired,
+  toggleFavorite: PropTypes.func.isRequired,
+  openModalWithPhoto: PropTypes.func.isRequired,
+  isFavPhotoExist: PropTypes.bool.isRequired,
+  setTopic: PropTypes.func.isRequired,
+  chosenTopic: PropTypes.number,
 };
 
 export default HomeRoute;

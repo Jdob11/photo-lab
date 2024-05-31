@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
 
@@ -18,7 +19,7 @@ const TopicList = (props) => {
     setTopic,
     chosenTopic
   } = props;
-  
+
   const topicsArray = topics.map(({ id, title }) => (
     <TopicListItem
       key={id}
@@ -34,6 +35,17 @@ const TopicList = (props) => {
       {topicsArray}
     </div>
   );
+};
+
+TopicList.propTypes = {
+  topics: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  setTopic: PropTypes.func.isRequired,
+  chosenTopic: PropTypes.number,
 };
 
 export default TopicList;

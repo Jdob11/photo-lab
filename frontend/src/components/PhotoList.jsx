@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
@@ -49,6 +50,13 @@ const PhotoList = (props) => {
   });
 
   return <ul className="photo-list">{photosArray}</ul>;
+};
+
+PhotoList.propTypes = {
+  photos: PropTypes.array.isRequired,
+  toggleFavorite: PropTypes.func.isRequired,
+  favorites: PropTypes.array.isRequired,
+  openModalWithPhoto: PropTypes.func
 };
 
 export default PhotoList;

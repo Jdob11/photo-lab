@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types'; 
 import "../styles/TopicListItem.scss";
 
 /**
@@ -19,7 +20,7 @@ const TopicListItem = (props) => {
     setTopic,
     isActive
   } = props;
-  
+
   return (
     <div className="topic-list__item">
       <span 
@@ -28,6 +29,13 @@ const TopicListItem = (props) => {
       >{title}</span>
     </div>
   );
+};
+
+TopicListItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  setTopic: PropTypes.func.isRequired,
+  isActive: PropTypes.bool.isRequired,
 };
 
 export default TopicListItem;

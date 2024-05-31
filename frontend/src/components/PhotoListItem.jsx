@@ -36,7 +36,7 @@ const PhotoListItem = (props) => {
     location: { city, country },
     user: { name, profile }
   };
-  
+
   const handleClick = () => {
     if (openModalWithPhoto) {
       openModalWithPhoto()
@@ -71,6 +71,7 @@ PhotoListItem.propTypes = {
   profile: PropTypes.string.isRequired,
   favorite: PropTypes.bool.isRequired,
   toggleFavorite: PropTypes.func.isRequired,
+  openModalWithPhoto: PropTypes.func,
 };
 
 export default PhotoListItem;

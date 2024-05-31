@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../styles/TopNavigationBar.scss';
 import TopicList from './TopicList';
 import FavBadge from './FavBadge';
@@ -31,6 +32,13 @@ const TopNavigationBar = (props) => {
       </div>
     </div>
   );
+};
+
+TopNavigationBar.propTypes = {
+  topics: PropTypes.array.isRequired,
+  setTopic: PropTypes.func.isRequired,
+  chosenTopic: PropTypes.number,
+  isFavPhotoExist: PropTypes.bool.isRequired,
 };
 
 export default TopNavigationBar;

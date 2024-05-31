@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
@@ -8,7 +9,6 @@ import PhotoFavButton from 'components/PhotoFavButton';
  * The PhotoDetailsModal component responsible for displaying details of a selected photo in a modal.
  * @param {Object} props - The props passed to the component.
  * 
- * @param {boolean} props.isOpen - Indicates whether the modal is open or closed.
  * @param {Function} props.onClose - The function to close the modal.
  * @param {Object} props.selectedPhoto - The selected photo object containing details such as image URL, photographer info, etc.
  * @param {Array} props.favorites - The array of favorite photos.
@@ -19,7 +19,6 @@ import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
   const {
-    isOpen,
     onClose,
     selectedPhoto,
     favorites,
@@ -38,7 +37,7 @@ const PhotoDetailsModal = (props) => {
 
   const similarPhotosArray = Object.values(similar_photos);
   
-  if (!isOpen) return null;
+  if (!selectedPhoto) return null;
   
   return (
     <div className='photo-details-modal'>
@@ -73,5 +72,14 @@ const PhotoDetailsModal = (props) => {
     </div>
   );
 };
+
+PhotoDetailsModal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  selectedPhoto: PropTypes.object.isRequired,
+  favorites: PropTypes.array.isRequired,
+  favorite: PropTypes.bool.isRequired,
+  toggleFavorite: PropTypes.func.isRequired,
+};
+
 
 export default PhotoDetailsModal;

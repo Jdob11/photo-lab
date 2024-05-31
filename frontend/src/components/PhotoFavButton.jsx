@@ -1,5 +1,5 @@
-import React, { useCallback, useState } from 'react';
-
+import React from 'react';
+import PropTypes from 'prop-types';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
@@ -13,7 +13,7 @@ import '../styles/PhotoFavButton.scss';
  * @returns {JSX.Element} The JSX element representing the favorite button.
  */
 
-function PhotoFavButton(props) {
+const PhotoFavButton = (props) => {
   const { favorite,
           toggleFavorite,
           photo
@@ -27,5 +27,11 @@ function PhotoFavButton(props) {
     </div>
   );
 }
+
+PhotoFavButton.propTypes = {
+  favorite: PropTypes.bool.isRequired,
+  toggleFavorite: PropTypes.func.isRequired,
+  photo: PropTypes.object.isRequired,
+};
 
 export default PhotoFavButton;
