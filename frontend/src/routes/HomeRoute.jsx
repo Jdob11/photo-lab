@@ -31,6 +31,7 @@ const HomeRoute = (props) => {
     chosenTopic,
     viewFavorites,
     reloadInitialPhotoData,
+    favoritesViewActive,
   } = props;
 
   const handleFavBadgeClick = () => {
@@ -52,6 +53,7 @@ const HomeRoute = (props) => {
         favorites={favorites}
         toggleFavorite={toggleFavorite}
         openModalWithPhoto={openModalWithPhoto}
+        favoritesViewActive={favoritesViewActive}
       />
     </div>
   );

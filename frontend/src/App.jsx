@@ -23,6 +23,7 @@ const App = () => {
     chosenTopic,
     viewFavorites,
     reloadInitialPhotoData,
+    favoritesViewActive,
   } = useApplicationData();
   
   return (
@@ -38,6 +39,7 @@ const App = () => {
         chosenTopic={chosenTopic}
         viewFavorites={viewFavorites}
         reloadInitialPhotoData={reloadInitialPhotoData}
+        favoritesViewActive={favoritesViewActive}
       />
       {selectedPhoto && (
         <PhotoDetailsModal

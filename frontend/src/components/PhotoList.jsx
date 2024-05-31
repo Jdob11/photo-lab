@@ -19,10 +19,11 @@ const PhotoList = (props) => {
     photoData,
     toggleFavorite,
     favorites,
-    openModalWithPhoto
+    openModalWithPhoto,
+    favoritesViewActive
   } = props;
 
-  if (photoData.length === 0) {
+  if (favoritesViewActive && photoData.length === 0) {
     return <p className="no-photos-message">No photos have been favorited...yet.</p>;
   }
 

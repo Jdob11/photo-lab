@@ -1,4 +1,4 @@
-import { useReducer, useEffect } from 'react';
+import { useReducer, useEffect, useState } from 'react';
 
 /**
  * Action types for the application.
@@ -137,6 +137,7 @@ const initialState = {
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [favoritesViewActive, setFavoritesViewActive] = useState(false);
 
   // useEffect(() => {   // Fetch initial photo data
   //   fetch('/api/photos')
@@ -217,7 +218,8 @@ const useApplicationData = () => {
   const isFavPhotoExist = state.favorites.length > 0;
 
   const viewFavorites = (favoritePhotosArray) => {
-    dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: favoritePhotosArray })
+    dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: favoritePhotosArray });
+    setFavoritesViewActive(true);
   }
 
   /**
@@ -240,6 +242,7 @@ const useApplicationData = () => {
   const reloadInitialPhotoData = () => {
     fetchInitialPhotoData();
     dispatch({ type: ACTIONS.RESET_CHOSEN_TOPIC });
+    setFavoritesViewActive(false);
   };
 
   return {
@@ -251,6 +254,7 @@ const useApplicationData = () => {
     setTopic,
     viewFavorites,
     reloadInitialPhotoData,
+    favoritesViewActive,
   };
 };
 
