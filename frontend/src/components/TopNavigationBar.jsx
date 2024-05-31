@@ -20,15 +20,17 @@ const TopNavigationBar = (props) => {
     topics,
     isFavPhotoExist,
     setTopic,
-    chosenTopic
+    chosenTopic,
+    onFavBadgeClick,
+    reloadInitialPhotoData,
   } = props;
 
   return (
     <div className="top-nav-bar">
-      <span className="top-nav-bar__logo">PhotoLabs</span>
+      <span className="top-nav-bar__logo" onClick={reloadInitialPhotoData}>PhotoLabs</span>
       <div className='top-nav-bar'>
         <TopicList topics={topics} setTopic={setTopic} chosenTopic={chosenTopic} />
-        <FavBadge isFavPhotoExist={isFavPhotoExist} />
+        <FavBadge isFavPhotoExist={isFavPhotoExist} onClick={onFavBadgeClick}/>
       </div>
     </div>
   );

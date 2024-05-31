@@ -21,6 +21,8 @@ const App = () => {
     isFavPhotoExist,
     setTopic,
     chosenTopic,
+    viewFavorites,
+    reloadInitialPhotoData,
   } = useApplicationData();
   
   return (
@@ -34,6 +36,8 @@ const App = () => {
         isFavPhotoExist={isFavPhotoExist}
         setTopic={setTopic}
         chosenTopic={chosenTopic}
+        viewFavorites={viewFavorites}
+        reloadInitialPhotoData={reloadInitialPhotoData}
       />
       {selectedPhoto && (
         <PhotoDetailsModal

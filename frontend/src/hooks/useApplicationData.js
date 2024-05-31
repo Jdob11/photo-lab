@@ -26,6 +26,7 @@ const ACTIONS = {
   GET_PHOTOS_BY_TOPIC: 'GET_PHOTOS_BY_TOPIC',
   SET_ERROR: 'SET_ERROR',
   CLEAR_ERROR: 'CLEAR_ERROR',
+  RESET_CHOSEN_TOPIC: 'RESET_CHOSEN_TOPIC',
 };
 
 /**
@@ -46,7 +47,8 @@ const reducer = (state, action) => {
     SET_CHOSEN_TOPIC,
     GET_PHOTOS_BY_TOPIC,
     SET_ERROR,
-    CLEAR_ERROR
+    CLEAR_ERROR,
+    RESET_CHOSEN_TOPIC
   } = ACTIONS;
 
   switch (action.type) {
@@ -104,6 +106,11 @@ const reducer = (state, action) => {
         ...state,
         error: null,
       };
+    case ACTIONS.RESET_CHOSEN_TOPIC:
+      return {
+        ...state,
+        chosenTopic: null
+      };
     default:
       throw new Error(`Error: ${action.type} does not exist`);
   }
@@ -131,15 +138,30 @@ const initialState = {
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  useEffect(() => {   // Fetch initial photo data
+  // useEffect(() => {   // Fetch initial photo data
+  //   fetch('/api/photos')
+  //     .then((res) => res.json())
+  //     .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+  //     .catch((err) => {
+  //       dispatch({ type: ACTIONS.SET_ERROR, payload: 'Failed to fetch photos.' });
+  //       console.log('Error: ', err);
+  //     })
+  // }, []);
+
+  const fetchInitialPhotoData = () => {
     fetch('/api/photos')
       .then((res) => res.json())
       .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
       .catch((err) => {
         dispatch({ type: ACTIONS.SET_ERROR, payload: 'Failed to fetch photos.' });
         console.log('Error: ', err);
-      })
+      });
+  };
+
+  useEffect(() => {
+    fetchInitialPhotoData();
   }, []);
+
 
   useEffect(() => { // Fetch initial topic data
     fetch('/api/topics')
@@ -215,6 +237,11 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.CLOSE_MODAL });
   };
 
+  const reloadInitialPhotoData = () => {
+    fetchInitialPhotoData();
+    dispatch({ type: ACTIONS.RESET_CHOSEN_TOPIC });
+  };
+
   return {
     ...state,
     toggleFavorite,
@@ -223,6 +250,7 @@ const useApplicationData = () => {
     closeModal,
     setTopic,
     viewFavorites,
+    reloadInitialPhotoData,
   };
 };
 

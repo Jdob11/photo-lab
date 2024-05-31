@@ -29,7 +29,13 @@ const HomeRoute = (props) => {
     isFavPhotoExist,
     setTopic,
     chosenTopic,
+    viewFavorites,
+    reloadInitialPhotoData,
   } = props;
+
+  const handleFavBadgeClick = () => {
+    viewFavorites(favorites);
+  };
 
   return (
     <div className="home-route">
@@ -38,6 +44,8 @@ const HomeRoute = (props) => {
         isFavPhotoExist={isFavPhotoExist}
         setTopic={setTopic}
         chosenTopic={chosenTopic}
+        onFavBadgeClick={handleFavBadgeClick}
+        reloadInitialPhotoData={reloadInitialPhotoData}
       />
       <PhotoList
         photoData={photoData}

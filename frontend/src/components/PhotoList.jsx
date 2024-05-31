@@ -22,6 +22,10 @@ const PhotoList = (props) => {
     openModalWithPhoto
   } = props;
 
+  if (photoData.length === 0) {
+    return <p className="no-photos-message">No photos have been favorited...yet.</p>;
+  }
+
   const photosArray = photoData.map((photo) => {
     const {
       id,
@@ -31,7 +35,13 @@ const PhotoList = (props) => {
       similar_photos,
     } = photo;
     const isFavorite = favorites.some((favPhoto) => favPhoto.id === id);
-    const photoObjectForToggle = { id, regular, city, country, name, profile };
+    const photoObject = {
+      id,
+      urls: { regular, full },
+      location: { city, country },
+      user: { name, profile },
+      similar_photos,
+    };
     const photoObjectForModal = { id, full, city, country, name, profile, similar_photos };
 
     return (
@@ -43,7 +53,7 @@ const PhotoList = (props) => {
         name={name}
         profile={profile}
         favorite={isFavorite}
-        toggleFavorite={() => toggleFavorite(photoObjectForToggle)}
+        toggleFavorite={() => toggleFavorite(photoObject)}
         openModalWithPhoto={openModalWithPhoto ? () => openModalWithPhoto(photoObjectForModal) : undefined}
       />
     );
