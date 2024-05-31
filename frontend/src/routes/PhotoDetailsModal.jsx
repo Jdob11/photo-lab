@@ -4,6 +4,19 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 
+/**
+ * The PhotoDetailsModal component responsible for displaying details of a selected photo in a modal.
+ * @param {Object} props - The props passed to the component.
+ * 
+ * @param {boolean} props.isOpen - Indicates whether the modal is open or closed.
+ * @param {Function} props.onClose - The function to close the modal.
+ * @param {Object} props.selectedPhoto - The selected photo object containing details such as image URL, photographer info, etc.
+ * @param {Array} props.favorites - The array of favorite photos.
+ * @param {boolean} props.favorite - Indicates whether the selected photo is in favorites.
+ * @param {Function} props.toggleFavorite - The function to toggle the favorite status of a photo.
+ * @returns {JSX.Element} The JSX element representing the photo details modal.
+ */
+
 const PhotoDetailsModal = (props) => {
   const {
           isOpen,

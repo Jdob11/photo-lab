@@ -1,5 +1,14 @@
 import React from 'react';
 
+/**
+ * The FavIcon component responsible for displaying a heart icon indicating favorite status.
+ * @param {Object} props - The props passed to the component.
+ * 
+ * @param {boolean} props.displayAlert - Indicates whether to display an alert circle indicating new favorite.
+ * @param {boolean} props.selected - Indicates whether the icon is selected (filled heart) or not (outlined heart).
+ * @returns {JSX.Element} The JSX element representing the heart icon.
+ */
+
 const FavIcon = ({ displayAlert, selected }) => {
   return (
     <svg

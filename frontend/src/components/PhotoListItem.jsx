@@ -3,6 +3,21 @@ import PropTypes from 'prop-types';
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
+/**
+ * The PhotoListItem component responsible for rendering an individual photo item in the photo list.
+ * @param {Object} props - The props passed to the component.
+ * 
+ * @param {string} props.imageSource - The URL of the photo image.
+ * @param {string} props.city - The city where the photo was taken.
+ * @param {string} props.country - The country where the photo was taken.
+ * @param {string} props.name - The name of the photographer.
+ * @param {string} props.profile - The URL of the photographer's profile picture.
+ * @param {boolean} props.favorite - Indicates whether the photo is favorited.
+ * @param {Function} props.toggleFavorite - The function to toggle the favorite status of the photo.
+ * @param {Function} [props.openModalWithPhoto] - The optional function to open a modal with the photo details.
+ * @returns {JSX.Element} The JSX element representing the photo item.
+ */
+
 const PhotoListItem = (props) => {
   const { imageSource,
           city,
