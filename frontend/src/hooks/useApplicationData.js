@@ -219,6 +219,7 @@ const useApplicationData = () => {
 
   const viewFavorites = (favoritePhotosArray) => {
     dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: favoritePhotosArray });
+    dispatch({ type: ACTIONS.RESET_CHOSEN_TOPIC });
     setFavoritesViewActive(true);
   }
 
